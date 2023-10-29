@@ -1,0 +1,27 @@
+
+spring:
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/postgres
+    username: postgres
+    password: admin
+    pool:
+      initial-size: 5
+      max-size: 20
+  application:
+    name: identity-service
+
+server:
+  port: 8093
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka
+  instance:
+    preferIpAddress: true
+    hostName: 192.168.43.77
+
+#jwt
+jwt:
+  secret : secretsecretsecretsecretsecretsecretsecretsecretsecret
+  expiration: 3600

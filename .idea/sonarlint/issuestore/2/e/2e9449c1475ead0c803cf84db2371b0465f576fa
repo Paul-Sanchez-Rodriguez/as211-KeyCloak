@@ -1,0 +1,8 @@
+
+b	java:S112"FDefine and throw a dedicated exception instead of using a generic one.(±’ø8—†ÅÌ¶1
+d
+java:S2094$"BRemove this empty class, write its code or make it an "interface".(¦Á¦¼ıÿÿÿÿ8£†ÅÌ¶1
+u
+java:S1128"SRemove this unused import 'org.springframework.beans.factory.annotation.Autowired'.(¡¸Îùÿÿÿÿ8»ØıÌ¶1
+j
+java:S1128"HRemove this unused import 'org.springframework.web.client.RestTemplate'.(Îö¼Şûÿÿÿÿ8»ØıÌ¶1

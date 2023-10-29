@@ -1,0 +1,40 @@
+server:
+  port: 8081
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8099/eureka/
+  instance:
+    preferIpAddress: true
+    hostName: 192.168.43.77
+
+spring:
+  application:
+    name: gateway-service
+  cloud:
+    gateway:
+      routes:
+        - id: address-service
+          uri: lb://address-SERVICE
+          predicates:
+            - Path=/v1/address**
+
+        - id: identity-service
+          uri: lb://identity-SERVICE
+          predicates:
+            - Path=/**
+      default-filters: TokenRelay
+  security:
+    oauth2:
+      client:
+        provider:
+          keycloak:
+            issuer-uri: http://localhost:9090/realms/microservices-realm
+        registration:
+          spring-cloud-gateway-client:
+            client-id: spring-cloud-gateway-client
+            client-secret: sE9iw0unpmH1O94P0MrHBFGiYp81uRGl
+            provider: keycloak
+            authorization-grant-type: authorization_code
+            redirect-uri: http://localhost:8081/login/oauth2/code/spring-cloud-gateway-client

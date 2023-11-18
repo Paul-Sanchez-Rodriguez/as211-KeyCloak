@@ -1,0 +1,5 @@
+
+o
+java:S6204;"RReplace this usage of 'Stream.collect(Collectors.toList())' with 'Stream.toList()'(ª™¨¹8è¾«™½1
+W
+java:S1144%"5Remove this unused private "jwtAuthConverter" method.(©òƒþùÿÿÿÿ8ë¾«™½1

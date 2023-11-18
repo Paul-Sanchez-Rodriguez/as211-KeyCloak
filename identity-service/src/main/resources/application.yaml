@@ -1,12 +1,5 @@
 
 spring:
-  r2dbc:
-    url: r2dbc:postgresql://localhost:5432/postgres
-    username: postgres
-    password: admin
-    pool:
-      initial-size: 5
-      max-size: 20
   application:
     name: identity-service
 
@@ -21,7 +14,10 @@ eureka:
     preferIpAddress: true
     hostName: 192.168.43.77
 
-#jwt
-jwt:
-  secret : secretsecretsecretsecretsecretsecretsecretsecretsecret
-  expiration: 3600
+keycloak:
+  realm: PRS
+  ssl-required: external
+  use-resource-role-mappings: true
+  bearer-only: true
+  resource: backend
+  auth-server-url: http://localhost:8090

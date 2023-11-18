@@ -14,6 +14,12 @@ spring:
     name: gateway-service
   cloud:
     gateway:
+      globalcors:
+        cors-configurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: '*'
       routes:
         - id: address-service
           uri: lb://address-SERVICE
@@ -23,18 +29,18 @@ spring:
         - id: identity-service
           uri: lb://identity-SERVICE
           predicates:
-            - Path=/**
-      default-filters: TokenRelay
+            - Path=/user/**
+
+        - id: actividadDetalle-service
+          uri: lb://actividadDetalle-SERVICE
+          predicates:
+            - Path=/api/transaccionalData/**
   security:
     oauth2:
-      client:
-        provider:
-          keycloak:
-            issuer-uri: http://localhost:9090/realms/microservices-realm
-        registration:
-          spring-cloud-gateway-client:
-            client-id: spring-cloud-gateway-client
-            client-secret: sE9iw0unpmH1O94P0MrHBFGiYp81uRGl
-            provider: keycloak
-            authorization-grant-type: authorization_code
-            redirect-uri: http://localhost:8081/login/oauth2/code/spring-cloud-gateway-client
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8090/realms/PRS
+
+logging:
+  level:
+    org.springframework: DEBUG
